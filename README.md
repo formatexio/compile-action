@@ -16,7 +16,7 @@ Compile LaTeX documents to PDF in your CI pipeline using the [FormaTeX](https://
     api-key: ${{ secrets.FORMATEX_API_KEY }}
 ```
 
-Add your FormaTeX API key as a repository secret named `FORMATEX_API_KEY`. You can create one at [app.formatex.io](https://app.formatex.io) under **Settings → API Keys**.
+Add your FormaTeX API key as a repository secret named `FORMATEX_API_KEY`. You can create one at [app.formatex.io/dashboard/api-keys](https://app.formatex.io/dashboard/api-keys).
 
 ---
 
@@ -175,7 +175,7 @@ Suggestions:
 
 - [FormaTeX website](https://formatex.io)
 - [API documentation](https://docs.formatex.io)
-- [Create an API key](https://app.formatex.io)
+- [Create an API key](https://app.formatex.io/dashboard/api-keys)
 - [Report an issue](https://github.com/formatexio/compile-action/issues)
 
 ## License
