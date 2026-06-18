@@ -1,0 +1,38 @@
+name: 'FormaTeX Compile'
+description: 'Compile a LaTeX document to PDF using the FormaTeX API'
+branding:
+  icon: 'file-text'
+  color: 'blue'
+
+inputs:
+  api-key:
+    description: 'FormaTeX API key. Store this as a GitHub secret.'
+    required: true
+  file:
+    description: 'Path to the main .tex file, relative to the repository root.'
+    required: false
+    default: 'main.tex'
+  engine:
+    description: 'LaTeX engine to use: pdflatex, xelatex, lualatex, or latexmk.'
+    required: false
+    default: 'pdflatex'
+  output:
+    description: 'Output PDF file path.'
+    required: false
+    default: 'output.pdf'
+  runs:
+    description: 'Number of compilation passes (1–5). Leave blank to use the API default.'
+    required: false
+    default: ''
+  timeout:
+    description: 'Compilation timeout in seconds. Leave blank to use the API default.'
+    required: false
+    default: ''
+
+outputs:
+  pdf-path:
+    description: 'Path to the compiled PDF file.'
+
+runs:
+  using: 'node20'
+  main: 'index.js'

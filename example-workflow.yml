@@ -1,0 +1,37 @@
+name: Compile LaTeX
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.tex'
+      - '**.bib'
+  pull_request:
+    paths:
+      - '**.tex'
+      - '**.bib'
+  workflow_dispatch:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX
+        id: compile
+        uses: formatexio/compile-action@v1
+        with:
+          api-key: ${{ secrets.FORMATEX_API_KEY }}
+          file: main.tex
+          engine: pdflatex
+          output: build/document.pdf
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-pdf
+          path: ${{ steps.compile.outputs.pdf-path }}
+          retention-days: 30
